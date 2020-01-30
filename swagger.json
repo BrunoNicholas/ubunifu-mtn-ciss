@@ -1,0 +1,368 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is the documentation of the above named API specification using OAuth2 Access Code flow to describe security to your API as well as the free un authenticated.",
+    "version" : "v1",
+    "title" : "MTN CIS Access API",
+    "termsOfService" : "",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "ubunifu-mtn-cis.herokuapp.com",
+  "basePath" : "/api/v1",
+  "schemes" : [ "http" ],
+  "security" : [ {
+    "user_auth" : [ "read", "write" ]
+  } ],
+  "paths" : {
+    "/" : {
+      "get" : {
+        "tags" : [ "Start" ],
+        "description" : "Success! This shows that you have successfully reached the CIS API endpoints Proceed to work around it.",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "201" : {
+            "description" : "Accepted, Continue"
+          }
+        }
+      }
+    },
+    "/service" : {
+      "get" : {
+        "tags" : [ "Select Service" ],
+        "summary" : "Select Option To Continue",
+        "description" : "Select one option to continue with the sections.",
+        "operationId" : "itemsMenu",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Select Service" ],
+        "summary" : "Select option to proceed",
+        "description" : "Select an option from the menu provided either for user to continue",
+        "operationId" : "selectMenuItem",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "The selected item integer",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid option ID supplied"
+          },
+          "403" : {
+            "description" : "Currently not available service for user"
+          },
+          "404" : {
+            "description" : "Item not found in selection"
+          },
+          "405" : {
+            "description" : "Validation exception / Invalid input"
+          }
+        },
+        "security" : [ {
+          "user_auth" : [ "write", "read" ]
+        } ]
+      }
+    },
+    "/service/ott" : {
+      "get" : {
+        "tags" : [ "Only OTT" ],
+        "summary" : "All OTT Access Tax Packages",
+        "description" : "View the different available packages of validity for the OTT tax with your registered MTN number.",
+        "operationId" : "getOTTBundles",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Only OTT" ],
+        "summary" : "Purchase OTT Access Tax Package",
+        "description" : "Select an option from the different packages of validity for the OTT tax with your registered MTN number List the available packages for user to select index of choice option",
+        "operationId" : "purchaseOTTBundle",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "The selected item integer",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid option ID supplied"
+          },
+          "403" : {
+            "description" : "Currently not available service for user"
+          },
+          "404" : {
+            "description" : "Item not found in selection"
+          },
+          "405" : {
+            "description" : "Validation exception / Invalid input"
+          }
+        },
+        "security" : [ {
+          "user_auth" : [ "write", "read" ]
+        } ]
+      }
+    },
+    "/service/ott_data" : {
+      "get" : {
+        "tags" : [ "Data and OTT" ],
+        "summary" : "All Bata with OTT Access Tax Bundle Packages",
+        "description" : "View the different available packages of of data with OTT tax for your registered MTN number.",
+        "operationId" : "getDataOTTBundles",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Data and OTT" ],
+        "summary" : "Purchase Data with OTT Access Tax Package",
+        "description" : "Select an option from the different packages of data with OTT tax for your registered MTN number, List the available packages for user to select index of choice option",
+        "operationId" : "purchaseDataOTTBundle",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "The selected item integer",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid option ID supplied"
+          },
+          "403" : {
+            "description" : "Currently not available service for user"
+          },
+          "404" : {
+            "description" : "Item not found in selection"
+          },
+          "405" : {
+            "description" : "Validation exception / Invalid input"
+          }
+        },
+        "security" : [ {
+          "user_auth" : [ "write", "read" ]
+        } ]
+      }
+    },
+    "/service/ott/balance" : {
+      "post" : {
+        "tags" : [ "OTT Balance" ],
+        "summary" : "Check OTT Tax Validity/Balance",
+        "description" : "The user selects this option to see how much of the OTT tax validity period is left.",
+        "operationId" : "checkOTTBalance",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "The user's registered number",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "403" : {
+            "description" : "Currently not available service for user"
+          },
+          "404" : {
+            "description" : "User validation has expired"
+          },
+          "405" : {
+            "description" : "Validation exception / Invalid input"
+          }
+        },
+        "security" : [ ]
+      }
+    },
+    "/service/voice_bundles_daily" : {
+      "get" : {
+        "tags" : [ "Daily Voice Bundles" ],
+        "summary" : "All Category One Voice Bundles",
+        "description" : "View the different available packages of daily voice bundles and save much tax with your registered MTN number.",
+        "operationId" : "getDailyVoiceBundles",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Daily Voice Bundles" ],
+        "summary" : "Purchase Voice Bundle Package",
+        "description" : "Select an option from the different packages voice bundles with your registered MTN number. List the available packages for user to select index of choice option",
+        "operationId" : "purchaseDailyVoiceBundles",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "The selected item integer",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid option ID supplied"
+          },
+          "403" : {
+            "description" : "Currently not available service for user"
+          },
+          "404" : {
+            "description" : "Item not found in selection"
+          },
+          "405" : {
+            "description" : "Validation exception / Invalid input"
+          }
+        },
+        "security" : [ {
+          "user_auth" : [ "write", "read" ]
+        } ]
+      }
+    },
+    "/service/voice_bundles_weekly" : {
+      "get" : {
+        "tags" : [ "Weekly Voice Bundles" ],
+        "summary" : "All Category Two Voice Bundles",
+        "description" : "View the different available packages of daily voice bundles and save much tax with your registered MTN number.",
+        "operationId" : "getWeeklyVoiceBundles",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Weekly Voice Bundles" ],
+        "summary" : "Purchase Weekly Voice Bundle Package",
+        "description" : "Select an option from the different packages voice bundles with your registered MTN number. List the available packages for user to select index of choice option",
+        "operationId" : "purchaseWeeklyVoiceBundles",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "The selected item integer",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid option ID supplied"
+          },
+          "403" : {
+            "description" : "Currently not available service for user"
+          },
+          "404" : {
+            "description" : "Item not found in selection"
+          },
+          "405" : {
+            "description" : "Validation exception / Invalid input"
+          }
+        },
+        "security" : [ {
+          "user_auth" : [ "write", "read" ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "user_auth" : {
+      "type" : "oauth2",
+      "authorizationUrl" : "http://example.com/oauth/auth",
+      "tokenUrl" : "http://example.com/oauth/token",
+      "flow" : "accessCode",
+      "scopes" : {
+        "write" : "allows modifying resources",
+        "read" : "allows reading resources"
+      }
+    },
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "api_key",
+      "in" : "header"
+    }
+  },
+  "definitions" : {
+    "Order" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "bundleId" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "validity" : {
+          "type" : "string"
+        },
+        "quantity" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "purchaseDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "status" : {
+          "type" : "string",
+          "description" : "Order Status",
+          "enum" : [ "pending", "approved", "exception" ]
+        },
+        "complete" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      },
+      "xml" : {
+        "name" : "Order"
+      }
+    },
+    "msisdn" : {
+      "type" : "integer",
+      "xml" : {
+        "name" : "msisdn"
+      }
+    }
+  }
+}

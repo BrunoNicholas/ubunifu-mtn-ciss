@@ -1,0 +1,12 @@
+venv 
+.env
+*.lock
+.vscode
+tester.py
+__pycache__/
+.Python
+.coverage
+.coverage.*
+.cache
+.idea
+.idea/*
