@@ -28,6 +28,7 @@ pytest = "*"
 travis = "*"
 pyjwt = "*"
 coverage = "*"
+aniso8601 = "*"
 
 [requires]
 python_version = "3.7"

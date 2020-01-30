@@ -1,6 +1,5 @@
 venv 
 .env
-*.lock
 .vscode
 tester.py
 __pycache__/

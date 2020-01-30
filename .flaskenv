@@ -1,3 +1,3 @@
 FLASK_APP=run.py
 FLASK_RUN_PORT=5050
-FLASK_ENV=development
+FLASK_ENV=production
