@@ -11,6 +11,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'CI-CIS')
 # If there is a new version, the views file will be different
 # and the blueprint will be updated to a new line
 # such as /api/v2
+
 app.register_blueprint(system_app, url_prefix="/api/v1")
 
 
@@ -76,10 +77,10 @@ def not_allowed(error):
 
 
 @app.errorhandler(415)
-def handle_unsupported_media_type(err):
-    return jsonify({'error': 'Unsupported Media Type - Use JSON','status': 415}), 415
+def handle_unsupported_media_type(error):
+    return jsonify({'error': 'Unsupported Media Type - Use JSON', 'status': 415}), 415
 
 
 @app.errorhandler(500)
 def special_exception_handler(error):
-    return jsonify({'error': 'Internal Server Error or Database connection failed!', 'status':500}), 500
+    return jsonify({'error': 'Internal Server Error or Database connection failed!', 'status': 500}), 500
