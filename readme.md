@@ -70,6 +70,12 @@ flask run
 
 Remember to check out the documentation for the endpoints and make some good progress.
 
+Heroku:
+
+```
+heroku config:set PYTHONPATH=system
+```
+
 
 ### Windows
 Here, you need to install the Python 3.7 or any other 3.x just as above and follow along

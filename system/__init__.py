@@ -1,8 +1,10 @@
+import os
 from flask import Flask, jsonify
 
 from .vroutes.views_v1 import system_app
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'CI-CIS')
 
 # register a blueprint for the version
 # with the API standard
