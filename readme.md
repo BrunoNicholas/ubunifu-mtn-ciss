@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/BrunoNicholas/ubunifu-mtn-ciss.svg?branch=master)](https://travis-ci.org/BrunoNicholas/ubunifu-mtn-ciss)
 
+[![Coverage Status](https://coveralls.io/repos/github/BrunoNicholas/ubunifu-mtn-ciss/badge.svg?branch=master)](https://coveralls.io/github/BrunoNicholas/ubunifu-mtn-ciss?branch=master)
+
 # Welcome to this test API
 The test api instance  for CIS purchases of packages, a brief start test shell.
 
